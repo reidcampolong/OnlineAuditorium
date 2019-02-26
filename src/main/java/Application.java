@@ -11,5 +11,7 @@ public class Application {
 
         // Create Home path leading to Home's Controller
         Spark.get(Path.HOME, HomeController.serveRoute);
+
+        new WebServer();
     }
 }
