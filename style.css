@@ -1,0 +1,21 @@
+th, td {
+  text-align: center;
+  width: 25px;
+  height: 25px;
+}
+
+.OCCUPIED {
+  background-color: #f44242;
+}
+
+.AVAILABLE {
+  background-color: #00ff00;
+}
+
+.BLACK {
+  background-color: #6d6d6d;
+}
+
+.HANDICAP {
+  background-color: #0085FF;
+}
