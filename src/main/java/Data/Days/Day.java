@@ -51,10 +51,21 @@ public class Day {
         Seat seat = section.getSeatByName(document.getId());
         Status status = Status.valueOf(document.getData().get("status").toString());
         String holder = document.getData().get("holder").toString();
-        HTMLBuilder.updateSeat(seat, status, holder);
+        seat.changeStatus(status);
+        seat.changeSeatHolder(holder);
     }
 
     public String getDatabaseName() {
         return databaseName;
+    }
+
+    public Section getLeftSection() {
+        return leftSection;
+    }
+    public Section getMiddleSection() {
+        return middleSection;
+    }
+    public Section getRightSection() {
+        return rightSection;
     }
 }

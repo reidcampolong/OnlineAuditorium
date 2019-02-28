@@ -1,24 +1,14 @@
 package Data.Section.Seat;
 
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
-import main.java.Listeners.SeatClickListener;
-import main.java.Section.Section;
-
 /**
- * A seat object that holds the button
+ * A seat in our datastructure
  */
 public class Seat {
-
-    public static String fontSize = "8";
 
     private int sectionNumber;
     private String sectionTitle;
 
-    private boolean isSelected;
-    private Section section;
     private int x, y;
-    private Button clientButton;
 
     private Status seatStatus;
     private String seatHolder;
@@ -38,8 +28,6 @@ public class Seat {
         this.seatHolder = seatHolder;
         this.seatStatus = seatStatus;
         this.sectionTitle = name;
-
-        createButton();
     }
 
     /**
@@ -49,16 +37,6 @@ public class Seat {
      */
     public void changeStatus(Status newStatus) {
         this.seatStatus = newStatus;
-        updateSeatStyle();
-    }
-
-    public void updateSelected(boolean selected) {
-        isSelected = selected;
-        if (selected) {
-            clientButton.setStyle("-fx-font-weight: bold; -fx-font-size: " + fontSize + "; -fx-background-color: #fc33ff; -fx-border-color: #000000; -fx-border-width: 1px;");
-        } else {
-            updateSeatStyle();
-        }
     }
 
     /**
@@ -68,51 +46,6 @@ public class Seat {
      */
     public void changeSeatHolder(String newHolder) {
         this.seatHolder = newHolder;
-    }
-
-    /**
-     * Visually updates a seat's style
-     */
-    public void updateSeatStyle() {
-        String colorString = "";
-        clientButton.setText(getSectionTitle());
-        if(isSelected) return;
-        switch (seatStatus) {
-            case AVAILABLE:
-                colorString = "00ff00";
-                break;
-            case OCCUPIED:
-                colorString = "ff0000";
-                break;
-            case BLACK:
-                colorString = "6d6d6d";
-                clientButton.setText("");
-                break;
-            case HANDICAP:
-                colorString = "0085FF";
-                clientButton.setText("HR");
-                break;
-        }
-        clientButton.setStyle("-fx-font-weight: bold; -fx-font-size: " + fontSize + "; -fx-background-color: #" + colorString + "; -fx-border-color: #000000; -fx-border-width: 1px;");
-    }
-
-    /**
-     * Initialzes the seat's button
-     */
-    private void createButton() {
-
-        clientButton = new Button(getSectionTitle());
-        clientButton.setPrefWidth(38);
-
-        updateSeatStyle();
-
-        clientButton.setOnAction(new SeatClickListener(this));
-
-        GridPane.setConstraints(clientButton, x, y);
-    }
-
-    public Button getClientButton() {
-        return clientButton;
     }
 
     public int getX() {

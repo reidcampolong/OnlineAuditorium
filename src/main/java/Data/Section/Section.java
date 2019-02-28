@@ -16,15 +16,18 @@ public class Section {
     private HashMap<String, Seat> seatNameMap;
     private int sectionNumber;
     private Seat[][] seats;
+    private int cols, rows;
 
     public Section(int sectionNumber, int cols, int rows) {
         this.seatNameMap = new HashMap();
         this.sectionNumber = sectionNumber;
+        this.cols = cols;
+        this.rows = rows;
         this.initPane(cols, rows);
     }
 
     /**
-     * Initializes pane with seat buttons
+     * Initializes data chart with seat buttons
      *
      * @param cols
      * @param rows
@@ -46,16 +49,20 @@ public class Section {
         return seatNameMap.get(seatName);
     }
 
-    public Seat[][] getAllSeats() {
+    public int getSectionNumber() {
+        return sectionNumber;
+    }
+
+    public Seat[][] getSeats() {
         return seats;
     }
 
-    public Seat getSeatAtIndex(int x, int y) {
-        return seats[x][y];
+    public int getCols() {
+        return cols;
     }
 
-    public int getSectionNumber() {
-        return sectionNumber;
+    public int getRows() {
+        return rows;
     }
 
 
