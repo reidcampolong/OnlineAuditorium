@@ -10,18 +10,19 @@ import Utilities.SeatTranslator;
 public class HTMLBuilder {
 
     public static String buildHTMLPage(Day day) {
-        System.out.println("Starting new builder");
         StringBuilder builder = new StringBuilder();
-        System.out.println("A");
         builder.append("<html>  <head>\n" +
                 getStyleTag() +
                 "  </head>\n" +
                 "  <body>");
-        System.out.println("B");
+        builder.append("<table><td>");
         builder.append(buildHTMLForSection(day.getLeftSection()));
-        System.out.println("C");
+        builder.append("</td><td>");
+        builder.append(buildHTMLForSection(day.getMiddleSection()));
+        builder.append("</td><td>");
+        builder.append(buildHTMLForSection(day.getRightSection()));
+        builder.append("</td></table>");
         builder.append("</body></html>");
-        System.out.println("Built HTML");
         return builder.toString();
     }
 
